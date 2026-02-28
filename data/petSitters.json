@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Kari Hansen",
+    "location": "Oslo",
+    "pricePerDay": 400,
+    "rating": 4.6,
+    "reviewCount": 12,
+    "maxDogs": 2,
+    "acceptsPuppies": true,
+    "acceptsLargeDogs": false,
+    "yearsOfExperience": 5,
+    "experienceDescription": "Erfaring med valper, seniorhunder og lange turer",
+    "available": true,
+    "created": "2025-09-02T09:00:00",
+    "updated": "2025-09-12T16:45:00"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "userName": "Ola Nordmann",
+    "password": "abc123",
+    "email": "ola@example.com",
+    "description": "Trenger hundepass i helger og ferier",
+    "dogs": [
+      {
+        "id": 1,
+        "name": "Bella",
+        "breed": "Golden Retriever",
+        "age": 4,
+        "allergies": ["kylling"]
+      },
+      {
+        "id": 2,
+        "name": "Max",
+        "breed": "Labrador",
+        "age": 2,
+        "allergies": []
+      }
+    ],
+    "created": "2025-09-01T10:30:00",
+    "updated": "2025-09-10T14:20:00"
+  }
+]
