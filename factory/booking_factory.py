@@ -6,7 +6,7 @@ today = date.today()
 
 
 
-class bookingFactory:
+class BookingFactory:
     def __init__(self):
         self.faker = faker.Faker()
 

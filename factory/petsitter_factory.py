@@ -6,7 +6,7 @@ today = date.today()
 
 
 
-class petSitterFactory:
+class PetSitterFactory:
     def __init__(self):
         self.faker = faker.Faker()
 

@@ -4,7 +4,7 @@ from datetime import timedelta, date, datetime
 today = date.today()
 
 
-class userFactory:
+class UserFactory:
     def __init__(self):
         self.faker = faker.Faker()
 
