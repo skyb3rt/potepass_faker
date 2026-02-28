@@ -41,5 +41,5 @@ jobs:
       - name: upload files
         uses: actions/upload-artifact@v4
         with:
-          name: output
+          name: output-${{github.env.ANTALL_USERS }}users-${{ github.env.PETSITTERS_ANTALL }}petsitters-${{ github.env.BOOKINGS_ANTALL }}bookings
           path: output/*.json
