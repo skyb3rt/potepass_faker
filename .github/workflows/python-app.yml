@@ -35,11 +35,11 @@ jobs:
       - name: Generate files
         run: uv run main.py
         env:
-          ANTALL_USERS: ${{ github.event.inputs.antall_users || 10 }}
-          PETSITTERS_ANTALL: ${{ github.event.inputs.petsitters_antall || 5 }}
-          BOOKINGS_ANTALL: ${{ github.event.inputs.bookings_antall || 20 }}
+          ANTALL_USERS: ${{ github.event.inputs.antall_users }}
+          PETSITTERS_ANTALL: ${{ github.event.inputs.petsitters_antall }}
+          BOOKINGS_ANTALL: ${{ github.event.inputs.bookings_antall }}
       - name: upload files
         uses: actions/upload-artifact@v4
         with:
-          name: output-${{github.env.ANTALL_USERS }}users-${{ github.env.PETSITTERS_ANTALL }}petsitters-${{ github.env.BOOKINGS_ANTALL }}bookings
+          name: output-${{github.event.inputs.antall_users }}users-${{ github.event.inputs.petsitters_antall }}petsitters-${{ github.event.inputs.bookings_antall }}bookings
           path: output/*.json
