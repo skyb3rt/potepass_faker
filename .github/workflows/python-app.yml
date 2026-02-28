@@ -5,9 +5,23 @@ name: Python application
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      antall_users:
+        description: "Antall brukere"
+        required: false
+        default: "10"
+      petsitters_antall:
+        description: "Antall dyrepasere"
+        required: false
+        default: "5"
+      bookings_antall:
+        description: "Antall bookinger"
+        required: false
+        default: "20"
 
 permissions:
   contents: read
@@ -16,19 +30,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: isntall uv and Set up Python 3.10
-      uses: astral-sh/setup-uv@v1
-      with:
-        python-version: "3.10"
-        cache-dependency-path: 'uv.lock'
-    
-    - name: Install dependencies
-      run: uv sync
-    - name: Generate files
-      run: uv run main.py
-    - name: upload files
-      uses: actions/upload-artifact@v4
-      with:
-        name: output
-        path: output/*.json
+      - uses: actions/checkout@v4
+      - name: isntall uv and Set up Python 3.10
+        uses: astral-sh/setup-uv@v1
+        with:
+          python-version: "3.10"
+          cache-dependency-path: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync
+      - name: Generate files
+        run: uv run main.py
+        env:
+          ANTALL_USERS: ${{ github.event.inputs.antall_users || 10 }}
+          PETSITTERS_ANTALL: ${{ github.event.inputs.petsitters_antall || 5 }}
+          BOOKINGS_ANTALL: ${{ github.event.inputs.bookings_antall || 20 }}
+      - name: upload files
+        uses: actions/upload-artifact@v4
+        with:
+          name: output
+          path: output/*.json

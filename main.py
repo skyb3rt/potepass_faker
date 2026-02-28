@@ -5,11 +5,14 @@ from factory.booking_factory import bookingFactory
 from utils.utils import read_json_file, write_json_file
 from datetime import date 
 import faker
+import sys
+import os
 
 def main():
-    antall_users=10
-    petSitters_antall=5
-    bookings_antall=20
+    # Ta inn variabler fra miljøvariabler eller kommandolinje med standardverdier
+    antall_users = int(os.getenv('ANTALL_USERS', sys.argv[1] if len(sys.argv) > 1 else 10))
+    petSitters_antall = int(os.getenv('PETSITTERS_ANTALL', sys.argv[2] if len(sys.argv) > 2 else 5))
+    bookings_antall = int(os.getenv('BOOKINGS_ANTALL', sys.argv[3] if len(sys.argv) > 3 else 20))
 
     bookings_list =bookings.Model(bookings=[booking for booking in read_json_file('data/bookings.json')])
     petSitters_list = petsitters.Model(petSitters=[petSitter for petSitter in read_json_file('data/petSitters.json')])
