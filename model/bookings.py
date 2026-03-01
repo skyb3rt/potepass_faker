@@ -14,7 +14,8 @@ class Booking(BaseModel):
     message: str
     created: str
     updated: str
-    rating: None|float
+    rating: None|int
+    payed: None| bool
 
 
 class Model(BaseModel):

@@ -16,11 +16,15 @@ class BookingFactory:
         created = self.faker.date_between(start_date=date(2026, 1, 1), end_date=today)
         updated = created + timedelta(days=self.faker.random_int(min=0, max=5))
         status=self.faker.random_element(elements=('pending', 'confirmed', 'cancelled', 'completed'))
+        payed=False
+        if status == 'completed':
+             payed=self.faker.boolean(chance_of_getting_true=80)
+             
         if updated > today:
             updated = today
 
         if toDate < today and status == 'completed':
-            rating_random=self.faker.pyfloat(min_value=1, max_value=5, right_digits=1)
+            rating_random=self.faker.pyfloat(min_value=1, max_value=5, right_digits=0)
             rating = self.faker.random_element(elements=[rating_random, None])
         else:
                 rating = None
@@ -40,7 +44,8 @@ class BookingFactory:
             message=self.message(),
             created=str(created),
             updated=str(updated),
-            rating=rating
+            rating=rating,
+            payed=payed,
         )
     
 
