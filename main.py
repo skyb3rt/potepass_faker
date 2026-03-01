@@ -10,9 +10,9 @@ import os
 
 def main():
     # Ta inn variabler fra miljøvariabler eller kommandolinje med standardverdier
-    antall_users = int(os.getenv('ANTALL_USERS', sys.argv[1] if len(sys.argv) > 1 else 10))
+    antall_users = int(os.getenv('ANTALL_USERS', sys.argv[1] if len(sys.argv) > 1 else 5))
     pet_sitters_antall = int(os.getenv('PETSITTERS_ANTALL', sys.argv[2] if len(sys.argv) > 2 else 5))
-    bookings_antall = int(os.getenv('BOOKINGS_ANTALL', sys.argv[3] if len(sys.argv) > 3 else 20))
+    bookings_antall = int(os.getenv('BOOKINGS_ANTALL', sys.argv[3] if len(sys.argv) > 3 else 50))
 
     bookings_list =bookings.Model(bookings=[booking for booking in read_json_file('data/bookings.json')])
     pet_sitters_list = petsitters.Model(petSitters=[petSitter for petSitter in read_json_file('data/pet_sitters.json')])
@@ -42,7 +42,7 @@ def main():
             new_bookings.append(BookingFactory().create_booking(i, user=user, petSitter=pet_sitter))
         bookings_obj = bookings.Model(bookings=bookings_list.bookings+new_bookings)
         write_json_file('output/bookings.json', bookings_obj.model_dump()["bookings"])
-    write_json_file('output/potepass_api.json', {"users":users_obj.model_dump()["users"], "petSitters":pet_sitters.model_dump()["petSitters"], "bookings":bookings_obj.model_dump()["bookings"]})
+    write_json_file('output/potepass.json', {"users":users_obj.model_dump()["users"], "petSitters":pet_sitters.model_dump()["petSitters"], "bookings":bookings_obj.model_dump()["bookings"]})
 
 if __name__ == "__main__":
 

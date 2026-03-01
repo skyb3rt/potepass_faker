@@ -15,10 +15,11 @@ class BookingFactory:
         toDate = fromDate + timedelta(days=self.faker.random_int(min=1, max=7))
         created = self.faker.date_between(start_date=date(2026, 1, 1), end_date=today)
         updated = created + timedelta(days=self.faker.random_int(min=0, max=5))
+        status=self.faker.random_element(elements=('pending', 'confirmed', 'cancelled', 'completed'))
         if updated > today:
             updated = today
 
-        if toDate < today:
+        if toDate < today and status == 'completed':
             rating_random=self.faker.pyfloat(min_value=1, max_value=5, right_digits=1)
             rating = self.faker.random_element(elements=[rating_random, None])
         else:
@@ -35,7 +36,7 @@ class BookingFactory:
             petSitterId=petSitter.id,
             fromDate=str(fromDate),
             toDate=str(toDate),
-            status=self.faker.random_element(elements=('pending', 'confirmed', 'cancelled', 'completed')),
+            status=status,
             message=self.message(),
             created=str(created),
             updated=str(updated),
@@ -49,3 +50,4 @@ class BookingFactory:
         message=f"Hei! {self.dog.name} er {self.faker.random_element(elements=text_list)}. {dog_allergies}"
 
         return message
+
