@@ -12,10 +12,10 @@ class Booking(BaseModel):
     toDate: str
     status: str
     message: str
-    created: str
-    updated: str
     rating: None|int
     payed: None| bool
+    created: str
+    updated: str
 
 
 class Model(BaseModel):
