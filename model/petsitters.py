@@ -6,6 +6,7 @@ from pydantic import BaseModel
 class PetSitter(BaseModel):
     id: int
     name: str
+    email: str
     location: str
     pricePerDay: int
     rating: None|float

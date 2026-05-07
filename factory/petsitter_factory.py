@@ -16,6 +16,7 @@ class PetSitterFactory:
         return petsitters.PetSitter(
             id=id,
             name=self.faker.name(),
+            email=self.faker.email(),
             location=self.location(),
             pricePerDay=self.faker.random_int(min=100, max=400),
             rating=self.faker.pyfloat(min_value=1, max_value=5, right_digits=1),

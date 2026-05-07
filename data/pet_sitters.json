@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Kari Hansen",
+    "email": "kari.hansen@example.com",
     "location": "Oslo",
     "pricePerDay": 400,
     "rating": 4.6,
